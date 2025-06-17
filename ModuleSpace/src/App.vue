@@ -1,9 +1,14 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 </script>
   <template>
     <div class="text-3xl font-bold text-blue-600 p-10">
       🎉 Tailwind CSS is working!
+    </div>
+    <div id="app">
+      <!-- Your app content -->
+      <SpeedInsights />
     </div>
 </template>
 
