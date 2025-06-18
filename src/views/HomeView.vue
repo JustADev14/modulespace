@@ -189,8 +189,7 @@
 </template>
 
 <script setup lang="ts">
-import { Github, Mail, ExternalLink, Code2, Sparkles, Zap, Shield, Layout, Database, Star, Clock } from 'lucide-vue-next'
-import { nextTick } from 'vue'
+import { Github, Mail, ExternalLink, Code2, Sparkles, Zap, Shield, Star, Clock } from 'lucide-vue-next'
 
 function scrollToProjects() {
   const target = document.getElementById('projects');
