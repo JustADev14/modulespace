@@ -80,7 +80,9 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-4">
               <a
-                href="#"
+                href="https://github.com/JustADev14/modulespace"
+                target="_blank"
+                rel="noopener"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="GitHub"
               >
