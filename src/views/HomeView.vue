@@ -32,6 +32,7 @@
               href="#"
               class="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Email"
+              @click.prevent="handleMailIconClick"
             >
               <Mail class="w-5 h-5" />
             </a>
@@ -39,6 +40,33 @@
         </div>
       </div>
     </header>
+
+    <!-- Modal Popup -->
+    <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+      <div class="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl p-8 w-full max-w-md relative">
+        <button @click="closeModal" class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-100 text-xl">&times;</button>
+        <h2 class="text-2xl font-bold mb-4 text-foreground">Contact Us</h2>
+        <form @submit.prevent="sendMail" class="flex flex-col gap-4">
+          <div>
+            <label class="block text-sm text-muted-foreground mb-1">Send to</label>
+            <input type="email" value="modulespace.dev@gmail.com" readonly class="w-full rounded bg-zinc-800 border border-zinc-700 px-3 py-2 text-foreground opacity-70 cursor-not-allowed" />
+          </div>
+          <div>
+            <label class="block text-sm text-muted-foreground mb-1">Your Email</label>
+            <input v-model="userEmail" type="email" required placeholder="you@email.com" class="w-full rounded bg-zinc-800 border border-zinc-700 px-3 py-2 text-foreground" />
+          </div>
+          <div>
+            <label class="block text-sm text-muted-foreground mb-1">Message</label>
+            <textarea v-model="userMessage" required rows="4" placeholder="Write your message..." class="w-full rounded bg-zinc-800 border border-zinc-700 px-3 py-2 text-foreground"></textarea>
+          </div>
+          <button type="submit" :disabled="sending" class="bg-gradient-to-r from-primary to-purple-500 text-primary-foreground px-6 py-2 rounded-lg font-medium transition-all duration-300 shadow-lg hover:scale-105 disabled:opacity-60">
+            {{ sending ? 'Sending...' : 'Send Message' }}
+          </button>
+          <div v-if="sendSuccess" class="text-green-400 text-sm mt-2">Message sent successfully!</div>
+          <div v-if="sendError" class="text-red-400 text-sm mt-2">{{ sendError }}</div>
+        </form>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative py-24 px-6">
@@ -191,7 +219,59 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import emailjs from '@emailjs/browser'
 import { Github, Mail, ExternalLink, Code2, Sparkles, Zap, Shield, Star, Clock } from 'lucide-vue-next'
+
+const showModal = ref(false)
+const userEmail = ref('')
+const userMessage = ref('')
+const sending = ref(false)
+const sendSuccess = ref(false)
+const sendError = ref('')
+
+function openModal() {
+  showModal.value = true
+  userEmail.value = ''
+  userMessage.value = ''
+  sendSuccess.value = false
+  sendError.value = ''
+}
+function closeModal() {
+  showModal.value = false
+}
+
+async function sendMail() {
+  sending.value = true
+  sendSuccess.value = false
+  sendError.value = ''
+  try {
+    await emailjs.send(
+      'service_kf31ncn',
+      'template_2hqvho5',
+      {
+        user_email: userEmail.value,
+        message: userMessage.value,
+        name: userEmail.value,
+        email: userEmail.value,
+        time: new Date().toLocaleString(),
+      },
+      'thGw9TpAz_qB8GDBZ'
+    )
+    sendSuccess.value = true
+    userEmail.value = ''
+    userMessage.value = ''
+  } catch (err: any) {
+    sendError.value = 'Failed to send. Please try again.'
+  } finally {
+    sending.value = false
+  }
+}
+
+function handleMailIconClick(e: Event) {
+  e.preventDefault()
+  openModal()
+}
 
 function scrollToProjects() {
   const target = document.getElementById('projects');
