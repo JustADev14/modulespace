@@ -20,7 +20,9 @@
           </div>
           <div class="flex items-center gap-4">
             <a
-              href="#"
+              href="https://github.com/JustADev14/modulespace"
+              target="_blank"
+              rel="noopener noreferrer"
               class="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="GitHub"
             >
