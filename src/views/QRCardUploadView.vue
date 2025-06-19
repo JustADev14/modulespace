@@ -1,9 +1,24 @@
 <template>
-  <div class="min-h-screen bg-background relative overflow-hidden flex flex-col items-center justify-center py-12">
+  <div class="min-h-screen bg-background relative overflow-hidden flex flex-col items-center justify-center">
     <div class="absolute inset-0 bg-nzxt-gradient pointer-events-none" />
     <div class="absolute inset-0 bg-grid-pattern bg-[size:20px_20px] opacity-[0.03] pointer-events-none" />
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-glow opacity-20 pointer-events-none" />
     <div class="absolute bottom-0 right-0 w-[600px] h-[300px] bg-purple-glow opacity-10 pointer-events-none" />
+    <!-- Banner Navigation Bar with ModuleSpace Hub logo inside -->
+    <div class="w-full fixed top-0 left-0 z-50 bg-[#1a1a2e] border-b-2 border-purple-500 shadow-lg flex items-center h-16 px-8">
+      <div class="flex items-center gap-3 mr-6">
+        <div class="w-8 h-8 bg-gradient-to-br from-primary to-purple-500 rounded-lg flex items-center justify-center shadow-lg shadow-primary/25">
+          <Code2 class="w-5 h-5 text-primary-foreground" />
+        </div>
+        <span class="text-xl font-semibold text-foreground">ModuleSpace Hub</span>
+      </div>
+      <router-link to="/" class="flex items-center text-purple-400 hover:text-white font-bold text-lg transition-colors">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        Home
+      </router-link>
+      <span class="ml-4 text-purple-200 text-base font-medium">/ QR Card Upload</span>
+    </div>
+    <div class="h-16"></div> <!-- Spacer for fixed banner -->
     <div
       class="w-full max-w-2xl bg-[#23234d] rounded-3xl shadow-2xl border border-[#a259ff] px-8 py-12 flex flex-col items-center transition-all duration-300 z-10 relative mx-auto"
     >
@@ -51,6 +66,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Code2 } from 'lucide-vue-next'
 
 const files = ref<File[]>([])
 const isDragging = ref(false)
