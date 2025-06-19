@@ -154,7 +154,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           <!-- Card 1: QR Sticker Sheet Generator -->
-          <div class="group relative bg-card/70 border border-border/50 rounded-xl p-6 flex flex-col min-h-[240px] shadow-lg transition-all duration-300 hover:shadow-[0_0_32px_0_rgba(168,85,247,0.5)] hover:scale-[1.03]">
+          <router-link to="/qr-upload" class="group relative bg-card/70 border border-border/50 rounded-xl p-6 flex flex-col min-h-[240px] shadow-lg transition-all duration-300 hover:shadow-[0_0_32px_0_rgba(168,85,247,0.5)] hover:scale-[1.03] cursor-pointer">
             <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full flex items-center gap-1">
               <Star class="w-3 h-3" /> Featured
             </span>
@@ -171,7 +171,7 @@
             <div class="flex items-center justify-end mt-auto pt-2">
               <span class="text-muted-foreground text-xs">2025</span>
             </div>
-          </div>
+          </router-link>
           <!-- Card 2: Coming Soon -->
           <div class="group bg-card/70 border border-border/50 rounded-xl p-6 flex flex-col items-center justify-center min-h-[240px] transition-all duration-300 hover:shadow-[0_0_32px_0_rgba(168,85,247,0.5)] hover:scale-[1.03]">
             <h3 class="text-lg font-semibold text-foreground mb-2">Coming Soon</h3>
