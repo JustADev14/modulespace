@@ -2,11 +2,13 @@
   <div class="min-h-screen bg-black">
     <router-view></router-view>
     <Analytics />
+    <SpeedInsights />
   </div>
 </template>
 
 <script setup lang="ts">
 import { Analytics } from '@vercel/analytics/vue'
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 // Component logic goes here
 </script>
 

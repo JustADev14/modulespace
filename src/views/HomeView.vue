@@ -5,7 +5,6 @@
     <div class="absolute inset-0 bg-grid-pattern bg-[size:20px_20px] opacity-[0.03] pointer-events-none" />
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-glow opacity-20 pointer-events-none" />
     <div class="absolute bottom-0 right-0 w-[600px] h-[300px] bg-purple-glow opacity-10 pointer-events-none" />
-
     <!-- Header -->
     <header class="relative border-b border-border/30 backdrop-blur-md bg-background/80">
       <div class="container mx-auto px-6 py-6">
@@ -222,7 +221,6 @@
 import { ref } from 'vue'
 import emailjs from '@emailjs/browser'
 import { Github, Mail, ExternalLink, Code2, Sparkles, Zap, Shield, Star, Clock } from 'lucide-vue-next'
-
 const showModal = ref(false)
 const userEmail = ref('')
 const userMessage = ref('')
