@@ -1,10 +1,12 @@
 <template>
   <div class="min-h-screen bg-black">
     <router-view></router-view>
+    <Analytics />
   </div>
 </template>
 
 <script setup lang="ts">
+import { Analytics } from '@vercel/analytics/vue'
 // Component logic goes here
 </script>
 
